@@ -338,6 +338,12 @@ body.bg-image {
   .splash-container h1 {
     color: #000;
     text-shadow: 0 0 20px #fff; }
+    .splash-container h1 a {
+      color: #000 !important;
+      text-decoration: none;
+      cursor: inherit; }
+      .splash-container h1 a:focus {
+        outline: none; }
     @media (min-width: 640px) and (max-width: 1023px) {
       .splash-container h1 {
         font-size: 4em; } }

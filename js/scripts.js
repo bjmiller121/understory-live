@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('body').classList.add('body-fade-out');
 
       window.setTimeout(function() {
-        window.location.href = '/index2';
+        window.location.href = $shh.getAttribute('href');
       }, 2000);
 
       event.preventDefault();
