@@ -79,6 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
+  // Handle expandable list interactions
+  var $expandableHeaders = document.querySelectorAll('.expandable dt');
+
+  if ($expandableHeaders != undefined) {
+    $expandableHeaders.forEach(($header, i) => {
+      $header.addEventListener('click', (event) => {
+        $header.classList.toggle('is-expanded');
+      });
+    });
+
+  }
+
   // Silly stuff for secret door.
   var $shh = document.querySelector('#shh');
 

@@ -213,9 +213,6 @@ hr {
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em; }
-  .footer-nav ul .dark-mode-toggle {
-    position: absolute;
-    right: 1em; }
 
 .page-nav {
   font-size: 2em;
@@ -238,11 +235,6 @@ hr {
 .page-intro {
   font-size: 1.25em;
   margin: 2em 0; }
-
-dl dt {
-  font-weight: bold;
-  font-size: 1.5em;
-  font-family: 'Dosis', 'Tahoma', sans-serif; }
 
 body {
   min-height: 100vh;
@@ -361,7 +353,12 @@ body.bg-image {
 
 .footer {
   margin-top: auto;
-  text-align: center; }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em; }
+  .footer .copyright {
+    font-size: 0.75em; }
 
 .body-fade-out {
   opacity: 0;
@@ -480,3 +477,34 @@ label {
 
 .form-field {
   margin: 1em 0; }
+
+dl.expandable dt {
+  position: relative;
+  padding: 0.3em 0 0.3em 1em;
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+  font-family: 'Dosis', 'Tahoma', sans-serif; }
+  dl.expandable dt:before {
+    content: "+";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    font-weight: 900; }
+  dl.expandable dt.is-expanded:before {
+    content: '-'; }
+
+dl.expandable dd {
+  max-height: 0;
+  margin-left: 1.5em;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height ease-in-out 500ms , opacity ease-in-out 500ms; }
+
+dl.expandable dt.is-expanded + dd {
+  max-height: 8em;
+  opacity: 1; }
+  dl.expandable dt.is-expanded + dd.expandable--medium {
+    max-height: 15em; }
+  dl.expandable dt.is-expanded + dd.expandable--tall {
+    max-height: 30em; }
