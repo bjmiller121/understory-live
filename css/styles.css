@@ -63,22 +63,24 @@ hr {
   .dark-mode .header {
     background: #222;
     box-shadow: 0 0 3px #000; }
+  .dark-mode .footer {
+    background: #222; }
   .dark-mode .logo-img {
     filter: invert(100%); }
   .dark-mode .main-menu .main-menu__list a.is-active {
     color: #fff; }
   @media (min-width: 1024px) {
-    .dark-mode .main-menu .main-menu__list li:hover > ul {
-      background-color: rgba(0, 0, 0, 0.9); }
+    .dark-mode .main-menu .main-menu__list li > ul {
+      background-color: rgba(34, 34, 34, 0.8); }
       @supports (backdrop-filter: blur(5px)) {
-        .dark-mode .main-menu .main-menu__list li:hover > ul {
-          background-color: rgba(0, 0, 0, 0.5); } } }
+        .dark-mode .main-menu .main-menu__list li > ul {
+          background-color: rgba(34, 34, 34, 0.4); } } }
   @media (max-width: 1023px) {
     .dark-mode .main-menu .main-menu__list.is-expanded {
-      background-color: rgba(0, 0, 0, 0.9); }
+      background-color: rgba(34, 34, 34, 0.8); }
       @supports (backdrop-filter: blur(5px)) {
         .dark-mode .main-menu .main-menu__list.is-expanded {
-          background-color: rgba(0, 0, 0, 0.5); } } }
+          background-color: rgba(34, 34, 34, 0.4); } } }
   .dark-mode input[type="text"],
   .dark-mode input[type="email"],
   .dark-mode input[type="number"],
@@ -111,10 +113,7 @@ hr {
     .dark-mode input[type="submit"]:hover {
       background: #bbb; }
   .dark-mode .home-hero .home-hero__inner {
-    background: rgba(0, 0, 0, 0.6); }
-  .dark-mode.bg-image .header,
-  .dark-mode.bg-image .footer {
-    background-color: #222; }
+    background: rgba(34, 34, 34, 0.6); }
 
 .main-menu {
   z-index: 100; }
@@ -161,14 +160,14 @@ hr {
           visibility: hidden;
           position: absolute;
           text-align: left;
-          background-color: rgba(255, 255, 255, 0.9);
+          background-color: rgba(255, 255, 255, 0.8);
           backdrop-filter: blur(5px);
           padding: 0;
           max-width: 20em;
           transition: opacity ease-in-out 250ms , visibility ease-in-out 250ms; }
           @supports (backdrop-filter: blur(5px)) {
             .main-menu .main-menu__list li > ul {
-              background-color: rgba(255, 255, 255, 0.2); } }
+              background-color: rgba(255, 255, 255, 0.4); } }
           .main-menu .main-menu__list li > ul li {
             display: block; }
           .main-menu .main-menu__list li > ul a {
@@ -186,12 +185,12 @@ hr {
       width: 100%;
       height: calc(100vh - (3em));
       overflow-y: auto;
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(5px);
       transition: opacity ease-in-out 250ms , visibility ease-in-out 250ms; }
       @supports (backdrop-filter: blur(5px)) {
         .main-menu .main-menu__list {
-          background-color: rgba(255, 255, 255, 0.2); } }
+          background-color: rgba(255, 255, 255, 0.4); } }
       .main-menu .main-menu__list li {
         display: block; }
       .main-menu .main-menu__list a {
@@ -245,10 +244,6 @@ body.bg-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; }
-  body.bg-image .header,
-  body.bg-image .footer {
-    background-color: #fff;
-    transition: background ease-in-out 500ms; }
 
 .header {
   position: sticky;
@@ -303,7 +298,7 @@ body.bg-image {
     transition: background ease-in-out 500ms; }
     @supports (backdrop-filter: blur(5px)) {
       .home-hero .home-hero__inner {
-        background-color: rgba(255, 255, 255, 0.2); } }
+        background-color: rgba(255, 255, 255, 0.4); } }
     .home-hero .home-hero__inner .home-hero__copy {
       max-width: 800px;
       margin: 0 auto;
@@ -356,9 +351,17 @@ body.bg-image {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2em; }
+  padding: 0 2em;
+  background: #fff;
+  transition: background ease-in-out 500ms; }
   .footer .copyright {
     font-size: 0.75em; }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .footer {
+      padding: 0 2em; } }
+  @media (max-width: 639px) {
+    .footer {
+      padding: 0 1em; } }
 
 .body-fade-out {
   opacity: 0;
