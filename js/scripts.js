@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if ($mainMenuToggle != undefined) {
     $mainMenuToggle.addEventListener('click', function(e) {
       $mainMenuList.classList.toggle('is-expanded');
-      console.log("Clicked");
       event.preventDefault();
     });
   }
