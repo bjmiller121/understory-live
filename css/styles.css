@@ -25,7 +25,18 @@
 .padding-none {
   padding: 0 !important; }
 
-/* Breakpoints */
+@media (min-width: 1024px) {
+  .desktop-hide {
+    display: none !important; } }
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tablet-hide {
+    display: none !important; } }
+
+@media (max-width: 639px) {
+  .mobile-hide {
+    display: none !important; } }
+
 html {
   color: #222;
   font-size: 16px;
@@ -210,9 +221,21 @@ hr {
       .main-menu .main-menu__list li,
       .main-menu .main-menu__list a {
         display: block; }
+      .main-menu .main-menu__list a {
+        font-size: 1.5em; }
       .main-menu .main-menu__list li.is-parent > ul {
-        visibility: hidden;
-        max-height: 0; } }
+        display: none;
+        overflow: hidden;
+        opacity: 0;
+        transition: height ease-in-out 500ms , opacity ease-in-out 500ms; }
+        .main-menu .main-menu__list li.is-parent > ul.is-expanded {
+          opacity: 1; }
+      .main-menu .main-menu__list li.is-parent a i.bi {
+        pointer-events: none; }
+        .main-menu .main-menu__list li.is-parent a i.bi:before {
+          transition: transform ease-in-out 500ms; }
+      .main-menu .main-menu__list li.is-parent a.is-expanded i.bi:before {
+        transform: rotate(180deg); } }
 
 .footer-nav ul {
   list-style: none;
@@ -524,16 +547,11 @@ dl.expandable dt {
     content: '-'; }
 
 dl.expandable dd {
-  max-height: 0;
-  margin-left: 1.5em;
+  display: none;
   overflow: hidden;
   opacity: 0;
-  transition: max-height ease-in-out 500ms , opacity ease-in-out 500ms; }
+  margin-left: 1.5em;
+  transition: height ease-in-out 500ms , opacity ease-in-out 500ms; }
 
 dl.expandable dt.is-expanded + dd {
-  max-height: 8em;
   opacity: 1; }
-  dl.expandable dt.is-expanded + dd.expandable--medium {
-    max-height: 15em; }
-  dl.expandable dt.is-expanded + dd.expandable--tall {
-    max-height: 30em; }

@@ -46,6 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  /**
+   * Main Menu mobile interaction
+   */
+  document.querySelectorAll('.main-menu li.is-parent > a').forEach((item) => {
+    item.addEventListener('click', (event) => {
+      toggleHeight(event.target.nextElementSibling, event.target);
+      event.preventDefault();
+    });
+  });
 
   /**
    * Handle clicking left/right arrows to navigate Page Nav
@@ -78,18 +87,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-
   // Handle expandable list interactions
-  var $expandableHeaders = document.querySelectorAll('.expandable dt');
-
-  if ($expandableHeaders != undefined) {
-    $expandableHeaders.forEach(($header, i) => {
-      $header.addEventListener('click', (event) => {
-        $header.classList.toggle('is-expanded');
-      });
+  document.querySelectorAll('.expandable dt').forEach((item) => {
+    item.addEventListener('click', (event) => {
+      toggleHeight(event.target.nextElementSibling, event.target);
     });
-
-  }
+  });
 
   // Silly stuff for secret door.
   var $shh = document.querySelector('#shh');
@@ -98,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $shh.addEventListener('click', (event) => {
       document.querySelector('body').classList.add('body-fade-out');
 
-      window.setTimeout(function() {
+      setTimeout(function() {
         window.location.href = $shh.getAttribute('href');
       }, 2000);
 
@@ -106,3 +109,63 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+
+// Utilities
+
+/**
+ * Toggle the height of a block-level element.
+ * @param  {DOM element} element The element to be toggled
+ * @param  {DOM element} trigger (Optional) The element being clicked to trigger toggle
+ */
+function toggleHeight(element, trigger) {
+  let duration = parseFloat(window.getComputedStyle(element).transitionDuration) * 1000;
+
+  // Show element if its currently hidden
+  if (window.getComputedStyle(element).display === 'none') {
+    // Make element visible
+    element.style.display = 'block';
+
+    // Temporarily set height to auto to grab height, then set back to 0 to allow transition
+    element.style.height = 'auto';
+    let height = element.offsetHeight;
+    element.style.height = 0;
+
+    // Set back to the height so CSS transitions from 0 to height.
+    setTimeout(function () {
+      element.style.height = height + 'px';
+    }, 0);
+
+    // Manage classes
+    element.classList.add('is-expanded');
+    if (trigger !== undefined) {
+      trigger.classList.add('is-expanded');
+    }
+
+    // Remove fixed height after transition
+    setTimeout( () => {
+      element.style.removeProperty('height');
+    }, duration);
+
+  // Hide element when it's displayed
+  } else {
+    // Set a fixed height to allow transition and then set to 0
+    element.style.height = element.offsetHeight + 'px';
+    setTimeout(function () {
+      element.style.height = 0;
+    }, 0);
+
+    // Manage classes
+    element.classList.remove('is-expanded');
+    if (trigger !== undefined) {
+      trigger.classList.remove('is-expanded');
+    }
+
+    // Hide element and remove 0 height after transition.
+    setTimeout( () => {
+      element.style.display = 'none';
+      element.style.removeProperty('height');
+    }, duration);
+
+  }
+}
