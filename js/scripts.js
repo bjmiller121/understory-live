@@ -46,15 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  /**
-   * Main Menu mobile interaction
-   */
   document.querySelectorAll('.main-menu li.is-parent > a').forEach((item) => {
     item.addEventListener('click', (event) => {
       toggleHeight(event.target.nextElementSibling, event.target);
       event.preventDefault();
     });
   });
+
 
   /**
    * Handle clicking left/right arrows to navigate Page Nav
@@ -163,7 +161,7 @@ function toggleHeight(element, trigger) {
 
     // Hide element and remove 0 height after transition.
     setTimeout( () => {
-      element.style.display = 'none';
+      element.style.removeProperty('display');
       element.style.removeProperty('height');
     }, duration);
 
