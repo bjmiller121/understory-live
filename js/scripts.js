@@ -48,8 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.main-menu li.is-parent > a').forEach((item) => {
     item.addEventListener('click', (event) => {
-      toggleHeight(event.target.nextElementSibling, event.target);
-      event.preventDefault();
+      if (window.innerWidth < 1024) {
+        toggleHeight(event.target.nextElementSibling, event.target);
+        event.preventDefault();
+      }
     });
   });
 
