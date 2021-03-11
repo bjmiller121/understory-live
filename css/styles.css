@@ -64,34 +64,34 @@ img {
   height: auto; }
 
 a {
-  color: #000;
+  color: black;
   transition: color ease-in-out 250ms; }
   a:hover {
-    color: #777; }
+    color: #555555; }
 
 hr {
   border: none;
-  border-top: 1px solid #bbb;
+  border-top: 1px solid #aaaaaa;
   margin: 3em 0; }
 
 .dark-mode {
   background-color: #222;
   color: #ddd; }
   .dark-mode a {
-    color: #bbb; }
+    color: #aaaaaa; }
     .dark-mode a:hover {
-      color: #fff; }
+      color: white; }
   .dark-mode .header {
     background: #222;
-    box-shadow: 0 0 3px #000; }
+    box-shadow: 0 0 3px black; }
   .dark-mode .footer {
     background: #222; }
   .dark-mode .logo-img {
     filter: invert(100%); }
   .dark-mode .main-menu .main-menu__list a {
-    color: #fff; }
+    color: white; }
     .dark-mode .main-menu .main-menu__list a:hover, .dark-mode .main-menu .main-menu__list a.is-active {
-      color: #bbb; }
+      color: #aaaaaa; }
   @media (min-width: 1024px) {
     .dark-mode .main-menu .main-menu__list li.is-parent > ul {
       background-color: rgba(34, 34, 34, 0.8); }
@@ -113,7 +113,8 @@ hr {
   .dark-mode textarea,
   .dark-mode select {
     background: #222;
-    border: 1px solid #777; }
+    border: 1px solid #555555;
+    color: #ddd; }
     .dark-mode input[type="text"]:focus,
     .dark-mode input[type="email"]:focus,
     .dark-mode input[type="number"]:focus,
@@ -122,19 +123,23 @@ hr {
     .dark-mode input[type="url"]:focus,
     .dark-mode textarea:focus,
     .dark-mode select:focus {
-      border-color: #bbb; }
+      border-color: #aaaaaa; }
   .dark-mode button,
   .dark-mode input[type="submit"] {
     background: #ddd;
-    color: #000; }
+    color: black; }
     .dark-mode button:focus, .dark-mode button:active,
     .dark-mode input[type="submit"]:focus,
     .dark-mode input[type="submit"]:active {
-      background: #fff;
+      background: white;
       color: #222; }
     .dark-mode button:hover,
     .dark-mode input[type="submit"]:hover {
-      background: #bbb; }
+      background: #aaaaaa; }
+  .dark-mode .expandable dt {
+    color: #aaaaaa; }
+    .dark-mode .expandable dt:hover {
+      color: white; }
   .dark-mode .home-hero .home-hero__inner {
     background: rgba(34, 34, 34, 0.6); }
 
@@ -163,9 +168,9 @@ hr {
       padding: 0.5em;
       text-decoration: none;
       display: block;
-      color: #000; }
+      color: black; }
       .main-menu .main-menu__list a:hover, .main-menu .main-menu__list a.is-active {
-        color: #777; }
+        color: #555555; }
   @media (min-width: 1024px) {
     .main-menu {
       text-align: right;
@@ -262,7 +267,7 @@ hr {
     text-decoration: none; }
   .page-nav .page-nav__link--disabled {
     pointer-events: none;
-    color: #777; }
+    color: #555555; }
 
 .text-label {
   font-family: 'Dosis', monospace, sans-serif;
@@ -292,7 +297,7 @@ body.bg-image {
   top: 0;
   z-index: 999;
   width: 100%;
-  background: #fff;
+  background: white;
   box-shadow: 0 0 3px #ddd;
   transition: background ease-in-out 500ms , box-shadow ease-in-out 500ms; }
   .header .header-wrapper {
@@ -406,7 +411,7 @@ body.bg-image {
   justify-content: space-between;
   align-items: center;
   padding: 0 2em;
-  background: #fff;
+  background: white;
   transition: background ease-in-out 500ms; }
   .footer .copyright {
     font-size: 0.75em; }
@@ -433,10 +438,10 @@ body.bg-image {
   .splash-container .splash-logo {
     drop-shadow: 0 0 20px #fff; }
   .splash-container h1 {
-    color: #000;
+    color: black;
     text-shadow: 0 0 20px #fff; }
     .splash-container h1 a {
-      color: #000 !important;
+      color: black !important;
       text-decoration: none;
       cursor: inherit; }
       .splash-container h1 a:focus {
@@ -502,14 +507,14 @@ select {
   input[type="url"]:focus,
   textarea:focus,
   select:focus {
-    border-color: #bbb; }
+    border-color: #aaaaaa; }
 
 button,
 input[type="submit"] {
   border: none;
   outline: none;
   background: #222;
-  color: #bbb;
+  color: #aaaaaa;
   padding: 0.5em 1.5em;
   font-family: 'Dosis', monospace, sans-serif;
   font-weight: 600;
@@ -519,11 +524,11 @@ input[type="submit"] {
   button:focus, button:active,
   input[type="submit"]:focus,
   input[type="submit"]:active {
-    background: #777;
+    background: #555555;
     color: #ddd; }
   button:hover,
   input[type="submit"]:hover {
-    background: #000;
+    background: black;
     cursor: pointer; }
 
 label {
@@ -540,8 +545,12 @@ dl.expandable dt {
   padding: 0.3em 0 0.3em 1em;
   font-weight: bold;
   font-size: 1.5em;
+  color: black;
   cursor: pointer;
-  font-family: 'Dosis', 'Tahoma', sans-serif; }
+  font-family: 'Dosis', 'Tahoma', sans-serif;
+  transition: color ease-in-out 500ms; }
+  dl.expandable dt:hover {
+    color: #555555; }
   dl.expandable dt:before {
     content: "+";
     display: inline-block;

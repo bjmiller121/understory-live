@@ -19,7 +19,7 @@
   <div class="header-wrapper content-wrapper content-wrapper--wide">
     <div class="logo">
       <a href="/understory-live/index2">
-        <img class="logo-img" alt="Understory Woodworking" loading="lazy" decoding="async" src="/understory-live/images/static/understory-trees.svg" width="350" height="89">
+        <img class="logo-img" alt="Understory Woodworking" loading="lazy" decoding="async" src="/understory-live/images/static/understory-simplified.svg" width="350" height="89">
       </a>
     </div>
 
@@ -111,20 +111,24 @@
   Interested in my work or considering comissioning some custom furniture? Send me a message below and I'll get back to you as soon as possible. Or scroll a little bit further to see some frequently asked questions.
 </p>
 
-<form>
+<form id="contact-form" data-target="/understory-live/contact/thanks">
   <div class="form-field">
     <label for="name">Name:</label><br />
-    <input id="name" type="text" required="required" />
+    <input id="name" name="name" type="text" required />
   </div>
   <div class="form-field">
     <label for="email">Email:</label><br />
-    <input id="email" type="email" required="required" />
+    <input id="email" name="email" type="email" required />
+  </div>
+  <div class="form-field">
+    <label for="subject">Subject:</label><br />
+    <input id="subject" name="subject" type="text" required />
   </div>
   <div class="form-field">
     <label for="message">Message:</label><br />
-    <textarea id="message" rows="6" required="required"></textarea>
+    <textarea id="message" name="message" rows="6" required></textarea>
   </div>
-  <input type="submit" value="Send" />
+  <input id="contact-form-submit" type="submit" value="Send" />
 </form>
 
 <hr />
@@ -171,11 +175,11 @@
   </dd>
 
   <dt>
-    Prefer to talk on the phone?
+    Prefer direct email or phone?
   </dt>
   <dd>
     <p>
-      Feel free to give me a call at <strong><code>(206)627-0724</code></strong>.
+      Feel free to email me directly at <code><a href="mailto:hello@understorywoodworking.com" target="_blank">hello@understorywoodworking.com</a></code> or give me a call at <code>(206)627-0724</code>
     </p>
   </dd>
 </dl>
