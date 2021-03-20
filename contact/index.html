@@ -10,7 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-  <script type="text/javascript" src="/js/scripts.js"></script>
+  <script src="/js/scripts.js"></script>
+  
+    
+      <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    
+      <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    
+      <script src="/js/contact.js"></script>
+    
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8THXF740E"></script>
   <script>
@@ -120,22 +129,22 @@
   Interested in my work or considering comissioning some custom furniture? Send me a message below and I'll get back to you as soon as possible. Or scroll a little bit further to see some frequently asked questions.
 </p>
 
-<form id="contact-form" data-target="/contact/thanks">
+<form id="contact-form">
   <div class="form-field">
     <label for="name">Name:</label><br />
-    <input id="name" name="name" type="text" required />
+    <input id="name" name="name" type="text" maxlength="100" required />
   </div>
   <div class="form-field">
     <label for="email">Email:</label><br />
-    <input id="email" name="email" type="email" required />
+    <input id="email" name="email" type="email" maxlength="254" required />
   </div>
   <div class="form-field">
     <label for="subject">Subject:</label><br />
-    <input id="subject" name="subject" type="text" required />
+    <input id="subject" name="subject" type="text" maxlength="256" required />
   </div>
   <div class="form-field">
     <label for="message">Message:</label><br />
-    <textarea id="message" name="message" rows="6" required></textarea>
+    <textarea id="message" name="message" rows="6" maxlength="5000" required></textarea>
   </div>
   <input id="contact-form-submit" type="submit" value="Send" />
 </form>

@@ -514,7 +514,7 @@ input[type="submit"] {
   border: none;
   outline: none;
   background: #222;
-  color: #aaaaaa;
+  color: #ddd;
   padding: 0.5em 1.5em;
   font-family: 'Dosis', monospace, sans-serif;
   font-weight: 600;
@@ -525,11 +525,20 @@ input[type="submit"] {
   input[type="submit"]:focus,
   input[type="submit"]:active {
     background: #555555;
-    color: #ddd; }
+    color: white; }
   button:hover,
   input[type="submit"]:hover {
     background: black;
     cursor: pointer; }
+  button.button--progress,
+  input[type="submit"].button--progress {
+    background-color: #90900b; }
+  button.button--success,
+  input[type="submit"].button--success {
+    background-color: #317531; }
+  button.button--fail,
+  input[type="submit"].button--fail {
+    background-color: #a20909; }
 
 label {
   font-family: 'Dosis', monospace, sans-serif;

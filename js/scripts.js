@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  
   // Silly stuff for secret door.
   var $shh = document.querySelector('#shh');
 
