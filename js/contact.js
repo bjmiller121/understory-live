@@ -1,68 +1,43 @@
-// Initialize Cloud Firestore through Firebase
-firebase.initializeApp({
-  apiKey: 'AIzaSyCCg_k7sG31vxDTd1pmMe1lISfG1dV8Bcc',
-  authDomain: 'understory-d236f.firebaseapp.com',
-  projectId: 'understory-d236f'
-});
-
-var db = firebase.firestore();
-
 document.addEventListener('DOMContentLoaded', function() {
   // Contact form submit handling
   var $contactForm = document.querySelector('#contact-form'),
-      $contactSubmit = document.querySelector('#contact-form-submit');
+      $contactButton = document.querySelector('#contact-form-submit'),
+      $formMessage = document.querySelector('.form-message');
 
   if ($contactForm !== undefined) {
     $contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      $contactSubmit.classList.add('button--progress');
-      $contactSubmit.value = "Sending...";
-      $contactSubmit.disabled = true;
+      $contactButton.classList.add('button--progress');
+      $contactButton.value = "Sending...";
+      $contactButton.disabled = true;
 
       var formData = new FormData($contactForm);
+      var plainFormData = Object.fromEntries(formData.entries());
       var request = new XMLHttpRequest();
-
-      // console.log(formData);
 
       request.open("POST", "https://us-central1-understory-d236f.cloudfunctions.net/contactForm");
       request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // Successful form submit.
-          $contactSubmit.classList.remove('button--progress');
-          $contactSubmit.classList.add('button--success');
-          $contactSubmit.value = "Message Sent!";
-          console.log("Sent");
-        } else {
-          console.error("Error Submitting Contact Form");
-          $contactSubmit.classList.remove('button--progress');
-          $contactSubmit.classList.add('button--fail');
-          $contactSubmit.value = "Send Failed";
-          // alert("Appologies, but there has been an error sending your message. Please try again or send an email directly with the address found at the bottom of this page.");
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            // Successful form submit.
+            $contactButton.classList.remove('button--progress');
+            $contactButton.classList.add('button--success');
+            $contactButton.value = "Message Sent!";
+            $formMessage.classList.add('form-message--success');
+            $formMessage.innerHTML = "Thanks for reaching out to Understory Woodworking. I'll get back to you shortly.";
+            console.log("Sent");
+          } else if (this.status == 500) {
+            console.error("Error Submitting Contact Form");
+            $contactButton.classList.remove('button--progress');
+            $contactButton.classList.add('button--fail');
+            $contactButton.value = "Send Failed";
+            $formMessage.classList.add('form-message--fail');
+            $formMessage.innerHTML = "Oh no! Something went wrong while sending your message. If this error continues, please use the email address listed in the FAQs below to reach me.";
+          }
         }
       };
-      // request.setRequestHeader("Content-Type", "application/json");
-      request.send(formData);
+      request.send(JSON.stringify(plainFormData));
 
-
-
-      // // Push data to Firebase
-      // db.collection("contact").add({
-      //   name: document.querySelector('#name').value,
-      //   email: document.querySelector('#email').value,
-      //   subject: document.querySelector('#subject').value,
-      //   message: document.querySelector('#message').value,
-      //   timestamp: new Date()
-      // })
-      // .then(() => {
-      //   // Successful form submit.
-      //   $contactSubmit.disabled = true;
-      //   $contactSubmit.value = "Message Sent!";
-      //   console.log("Sent");
-      // })
-      // .catch((error) => {
-      //   console.error("Error writing document: ", error);
-      //   alert("Appologies, but there has been an error sending your message. Please try again or send an email directly with the address found at the bottom of this page.");
-      // });
     });
   }
 });

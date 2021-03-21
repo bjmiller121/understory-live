@@ -532,13 +532,13 @@ input[type="submit"] {
     cursor: pointer; }
   button.button--progress,
   input[type="submit"].button--progress {
-    background-color: #90900b; }
+    background-color: #90900b !important; }
   button.button--success,
   input[type="submit"].button--success {
-    background-color: #317531; }
+    background-color: #317531 !important; }
   button.button--fail,
   input[type="submit"].button--fail {
-    background-color: #a20909; }
+    background-color: #a20909 !important; }
 
 label {
   font-family: 'Dosis', monospace, sans-serif;
@@ -548,6 +548,15 @@ label {
 
 .form-field {
   margin: 1em 0; }
+
+.form-message.form-message--success, .form-message.form-message--fail {
+  background: #317531;
+  color: #ddd;
+  padding: .5em;
+  margin: 1em 0; }
+
+.form-message.form-message--fail {
+  background: #a20909; }
 
 dl.expandable dt {
   position: relative;
