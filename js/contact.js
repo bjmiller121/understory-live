@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Contact form submit handling
   var $contactForm = document.querySelector('#contact-form'),
       $contactButton = document.querySelector('#contact-form-submit'),
+      $contactResetButton = document.querySelector('#contact-form-reset'),
       $formMessage = document.querySelector('.form-message');
 
   if ($contactForm !== undefined) {
     $contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      $contactButton.classList.add('button--progress');
-      $contactButton.value = "Sending...";
+      $contactButton.innerHTML = "Sending...";
       $contactButton.disabled = true;
 
       var formData = new FormData($contactForm);
@@ -21,24 +21,33 @@ document.addEventListener('DOMContentLoaded', function() {
           if (this.status == 200) {
             // Successful form submit.
             console.info(this.response);
-            $contactButton.classList.remove('button--progress');
-            $contactButton.classList.add('button--success');
-            $contactButton.value = "Message Sent!";
+            $contactButton.innerHTML = "Message Sent!";
             $formMessage.classList.add('form-message--success');
             $formMessage.innerHTML = "Thanks for reaching out to Understory Woodworking. I'll get back to you shortly.";
           } else if (this.status == 500 || this.status == 422) {
             // Either invalid values or email send error.
             console.error(this.response);
-            $contactButton.classList.remove('button--progress');
-            $contactButton.classList.add('button--fail');
-            $contactButton.value = "Send Failed";
+            $contactButton.innerHTML = "Sending Failed...";
             $formMessage.classList.add('form-message--fail');
             $formMessage.innerHTML = "Oh no! Something went wrong while sending your message. If this error continues, please use the email address listed in the FAQs below to reach me.";
           }
+
+          $contactResetButton.classList.remove('hide');
         }
       };
-      request.send(JSON.stringify(plainFormData));
 
+      request.send(JSON.stringify(plainFormData));
+    });
+
+    $contactResetButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      $contactForm.reset();
+      $contactButton.disabled = false;
+      $contactButton.innerHTML = "Send";
+      $formMessage.innerHTML = "";
+      $formMessage.classList.remove('form-message--fail');
+      $formMessage.classList.remove('form-message--success');
+      $contactResetButton.classList.add('hide');
     });
   }
 });

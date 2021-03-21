@@ -20,7 +20,7 @@
       <script src="/js/contact.js"></script>
     
   
-  <script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"bjmiller",utcoffset:"-7"}))};sessionStorage.setItem("_swa","1");</script>
+  <script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"bjmiller",utcoffset:"-8"}))};sessionStorage.setItem("_swa","1");</script>
 </head>
 
   <body>
@@ -126,9 +126,19 @@
     <label for="name">Name:</label><br />
     <input id="name" name="name" type="text" maxlength="100" required />
   </div>
-  <div class="form-field">
-    <label for="email">Email:</label><br />
-    <input id="email" name="email" type="email" maxlength="254" required />
+  <div class="fieldset-split">
+    <div class="form-field">
+      <label for="email">Email:</label><br />
+      <input id="email" name="email" type="email" maxlength="254" required />
+    </div>
+    <div class="form-field">
+      <label for="email">Phone:</label><br />
+      <input id="phone" pattern="^[0-9-+\s()]*$" title="Enter a valid phone number or leave blank" name="phone" type="tel" maxlength="24" placeholder="(Optional)" />
+    </div>
+  </div>
+  <div class="form-field form-field--sticky">
+    <label for="email">Fax number:</label><br />
+    <input id="fax" name="fax" type="tel" maxlength="24" tabindex="-1" autocomplete="off"/>
   </div>
   <div class="form-field">
     <label for="subject">Subject:</label><br />
@@ -138,8 +148,11 @@
     <label for="message">Message:</label><br />
     <textarea id="message" name="message" rows="6" maxlength="5000" required></textarea>
   </div>
-  <input id="contact-form-submit" type="submit" value="Send" />
-  <div class="form-message"></div>
+  <div class="form-field">
+    <button id="contact-form-submit">Send</button>
+    <button id="contact-form-reset" class="hide">Reset</button>
+    <div class="form-message"></div>
+  </div>
 </form>
 
 <hr />
