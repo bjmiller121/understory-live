@@ -20,14 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (this.readyState == 4) {
           if (this.status == 200) {
             // Successful form submit.
+            console.info(this.response);
             $contactButton.classList.remove('button--progress');
             $contactButton.classList.add('button--success');
             $contactButton.value = "Message Sent!";
             $formMessage.classList.add('form-message--success');
             $formMessage.innerHTML = "Thanks for reaching out to Understory Woodworking. I'll get back to you shortly.";
-            console.log("Sent");
-          } else if (this.status == 500) {
-            console.error("Error Submitting Contact Form");
+          } else if (this.status == 500 || this.status == 422) {
+            // Either invalid values or email send error.
+            console.error(this.response);
             $contactButton.classList.remove('button--progress');
             $contactButton.classList.add('button--fail');
             $contactButton.value = "Send Failed";
