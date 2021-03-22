@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   /**
-   * Dark Mode handling for toggle and cookies on page load.
+   * Dark Mode handling for toggle and localStorage on page load.
    */
   var $darkModeLink = document.querySelector('.dark-mode-toggle');
 
   if ($darkModeLink != undefined) {
-    if (Cookies.get('dark-mode') == 'on') {
+    if (localStorage.getItem('dark-mode') == 'on') {
       toggleDarkMode();
     }
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Toggle classes and cookies for dark Mode
+   * Toggle classes and localStorage for dark Mode
    * @param  {Boolean} clicked TRUE if the event triggering the toggle is a user's click
    */
   function toggleDarkMode(clicked) {
@@ -23,10 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('body').classList.toggle('dark-mode');
 
     if (clicked) {
-      if (Cookies.get('dark-mode') == 'on') {
-        Cookies.set('dark-mode', 'off');
+      if (localStorage.getItem('dark-mode') == 'on') {
+        localStorage.setItem('dark-mode', 'off');
+        pa.track({name: 'Dark Mode Toggled Off'});
       } else {
-        Cookies.set('dark-mode', 'on');
+        localStorage.setItem('dark-mode', 'on');
+        pa.track({name: 'Dark Mode Toggled On'});
       }
       event.preventDefault();
     }
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  
+
   // Silly stuff for secret door.
   var $shh = document.querySelector('#shh');
 
