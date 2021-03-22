@@ -21,15 +21,17 @@ document.addEventListener('DOMContentLoaded', function() {
           if (this.status == 200) {
             // Successful form submit.
             console.info(this.response);
+            pa.track({name: 'Contact Form Submitted', value: 'success', unit: 'status'});
             $contactButton.innerHTML = "Message Sent!";
             $formMessage.classList.add('form-message--success');
             $formMessage.innerHTML = "Thanks for reaching out to Understory Woodworking. I'll get back to you shortly.";
           } else if (this.status == 500 || this.status == 422) {
             // Either invalid values or email send error.
             console.error(this.response);
+            pa.track({name: 'Contact Form Submitted', value: 'failure', unit: 'status'});
             $contactButton.innerHTML = "Sending Failed...";
             $formMessage.classList.add('form-message--fail');
-            $formMessage.innerHTML = "Oh no! Something went wrong while sending your message. If this error continues, please use the email address listed in the FAQs below to reach me.";
+            $formMessage.innerHTML = "Oh no! Something went wrong while sending your message. If this error continues, please use the email address listed in the FAQ below to reach me.";
           }
 
           $contactResetButton.classList.remove('hide');
