@@ -36,7 +36,11 @@
 </head>
 
   <body>
-  <body>
+    <script>
+      if (localStorage.getItem('dark-mode') == 'on') {
+        document.querySelector('body').classList.add('dark-mode');
+      }
+    </script>
     <header class="header">
   <div class="header-wrapper content-wrapper content-wrapper--wide">
     <div class="logo">

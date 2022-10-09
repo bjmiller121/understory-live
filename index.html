@@ -35,8 +35,12 @@
   <script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
 </head>
 
-  <body class="bg-image" style="background-image:url(/images/processed/understory-bg-2000-c2e13f43.webp)">
   <body>
+    <script>
+      if (localStorage.getItem('dark-mode') == 'on') {
+        document.querySelector('body').classList.add('dark-mode');
+      }
+    </script>
     <header class="header">
   <div class="header-wrapper content-wrapper content-wrapper--wide">
     <div class="logo">
@@ -141,28 +145,23 @@
 
     <main class="main main--flex">
       
-
-
 <div class="home-hero">
-  <div class="home-hero__inner">
-    <div class="home-hero__copy content-wrapper content-wrapper--narrow text-centered">
-      <div>
-        <img src="/images/static/logo.svg" class="image-invertable" alt="Understory Woodworking Logo" width="400">
-      </div>
-
-      <h2>
-        Custom furniture and woodworking in Seattle, Washington.
-      </h2>
-
-      <p>
-        Understory designs and builds high-quality handmade furniture and other wooden furnishings out of a one-person shop in Seattle. Have a project in mind? Take a look around to see some of my work and <a href="/contact">reach out</a> with any questions or project ideas.
-      </p>
+  <div class="content-wrapper content-wrapper--narrow text-centered">
+    <div>
+      <img src="/images/static/logo.svg" class="image-invertable" alt="Understory Woodworking Logo" width="400">
     </div>
 
-    
+    <h2>
+      Custom furniture and woodworking in Seattle, Washington.
+    </h2>
 
-
+    <p>
+      Understory designs and builds high-quality handmade furniture and other wooden furnishings out of a one-person shop in Seattle. Have a project in mind? Take a look around to see some of my work and <a href="/contact">reach out</a> with any questions or project ideas.
+    </p>
   </div>
+
+  
+
 </div>
 
     </main>
